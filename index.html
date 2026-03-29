@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Explore Banff with a responsive travel page featuring a slider, scroll animations, a lightbox gallery, and an interactive map."
+  />
+  <title>Banff Escape | Travel Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Third-party library styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7.1/dist/css/glide.core.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7.1/dist/css/glide.theme.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/css/lightbox.min.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top">Banff Escape</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Open navigation</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#highlights">Highlights</a>
+        <a href="#attractions">Attractions</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#map-section">Map</a>
+        <a href="#plan">Plan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="eyebrow" data-aos="fade-up">Mountain air, turquoise lakes, unforgettable views</p>
+        <h1 data-aos="fade-up" data-aos-delay="120">Your Banff vacation starts here.</h1>
+        <p class="hero-text" data-aos="fade-up" data-aos-delay="220">
+          Discover alpine trails, peaceful lakes, cozy mountain stays, and scenic viewpoints in one of
+          Canada’s most iconic destinations.
+        </p>
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="320">
+          <a class="button button-primary" href="#attractions">Explore attractions</a>
+          <a class="button button-secondary" href="#gallery">View gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="highlights">
+      <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+          <p class="eyebrow">Why Banff</p>
+          <h2>A vacation that feels cinematic in every direction</h2>
+          <p>
+            Banff is perfect for travelers who want dramatic scenery, relaxing town energy, outdoor
+            adventures, and photo-worthy moments all in one trip.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="50">
+            <h3>Lake views</h3>
+            <p>Spend your mornings by bright blue water and your evenings watching the mountains turn gold.</p>
+          </article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="120">
+            <h3>Adventure options</h3>
+            <p>Choose between hiking, gondola rides, canoeing, scenic drives, and easy sightseeing stops.</p>
+          </article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="190">
+            <h3>Small-town charm</h3>
+            <p>Banff Avenue is full of cafés, local shops, and cozy places to unwind after a full day outside.</p>
+          </article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="260">
+            <h3>Easy itinerary</h3>
+            <p>Many famous locations are easy to combine into a two- or three-day trip without overplanning.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark stats-section">
+      <div class="container stats-grid" data-aos="fade-up">
+        <div class="stat-card">
+          <span class="stat-number">4</span>
+          <span class="stat-label">JS libraries integrated</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5</span>
+          <span class="stat-label">featured attractions</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">6</span>
+          <span class="stat-label">gallery moments</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">1</span>
+          <span class="stat-label">interactive travel map</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="attractions">
+      <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+          <p class="eyebrow">Featured attractions</p>
+          <h2>Swipe through the must-see stops</h2>
+          <p>
+            This attraction slider is powered by Glide.js and showcases places that make a Banff trip feel complete.
+          </p>
+        </div>
+
+        <div class="glide attractions-glide" data-aos="fade-up" data-aos-delay="100">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <article class="attraction-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1200/800?random=11';"
+                    alt="Lake Louise with mountains in the background"
+                  />
+                  <div class="attraction-content">
+                    <h3>Lake Louise</h3>
+                    <p>Known for still water, bright color, and postcard-level mountain scenery.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="glide__slide">
+                <article class="attraction-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1200/800?random=12';"
+                    alt="Moraine Lake surrounded by mountains"
+                  />
+                  <div class="attraction-content">
+                    <h3>Moraine Lake</h3>
+                    <p>A dramatic valley setting with one of the most famous lake views in the Rockies.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="glide__slide">
+                <article class="attraction-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1200/800?random=13';"
+                    alt="Banff Gondola scenic overlook"
+                  />
+                  <div class="attraction-content">
+                    <h3>Banff Gondola</h3>
+                    <p>Ride up for wide panoramic views and a memorable perspective over the valley.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="glide__slide">
+                <article class="attraction-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1200/800?random=14';"
+                    alt="Mountain trail through Johnston Canyon"
+                  />
+                  <div class="attraction-content">
+                    <h3>Johnston Canyon</h3>
+                    <p>Perfect for a trail experience that mixes boardwalks, cliffs, and waterfall views.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="glide__slide">
+                <article class="attraction-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1500740516770-92bd004b996e?auto=format&fit=crop&w=1200&q=80"
+                    onerror="this.onerror=null;this.src='https://picsum.photos/1200/800?random=15';"
+                    alt="Scenic road through Banff National Park"
+                  />
+                  <div class="attraction-content">
+                    <h3>Icefields Parkway</h3>
+                    <p>A scenic drive packed with mountain lookouts, glacier views, and quick photo stops.</p>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous slide">←</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Next slide">→</button>
+          </div>
+
+          <div class="glide__bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0" aria-label="Go to slide 1"></button>
+            <button class="glide__bullet" data-glide-dir="=1" aria-label="Go to slide 2"></button>
+            <button class="glide__bullet" data-glide-dir="=2" aria-label="Go to slide 3"></button>
+            <button class="glide__bullet" data-glide-dir="=3" aria-label="Go to slide 4"></button>
+            <button class="glide__bullet" data-glide-dir="=4" aria-label="Go to slide 5"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light alt-bg" id="gallery">
+      <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+          <p class="eyebrow">Travel gallery</p>
+          <h2>Tap any image to open the lightbox</h2>
+          <p>
+            The gallery uses Lightbox2 so visitors can browse photos in an immersive full-screen overlay.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <a
+            href="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="Sunrise light over the mountains"
+            class="gallery-item tall"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/900/1200?random=21';"
+              alt="Sunrise over a mountain landscape"
+            />
+          </a>
+          <a
+            href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="Forest trail near the mountains"
+            class="gallery-item"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/900/900?random=22';"
+              alt="Forest trail with mountain scenery"
+            />
+          </a>
+          <a
+            href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="Quiet lake reflections"
+            class="gallery-item"
+            data-aos="zoom-in"
+            data-aos-delay="140"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/900/900?random=23';"
+              alt="Lake reflection with mountains"
+            />
+          </a>
+          <a
+            href="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="High-altitude viewpoint"
+            class="gallery-item"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/900/900?random=24';"
+              alt="View from a high mountain lookout"
+            />
+          </a>
+          <a
+            href="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="Wildlife moments in the Rockies"
+            class="gallery-item"
+            data-aos="zoom-in"
+            data-aos-delay="260"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/900/900?random=25';"
+              alt="Wildlife standing in a mountain landscape"
+            />
+          </a>
+          <a
+            href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+            data-lightbox="banff-gallery"
+            data-title="Blue water and dramatic peaks"
+            class="gallery-item wide"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+              onerror="this.onerror=null;this.src='https://picsum.photos/1200/700?random=26';"
+              alt="Wide mountain lake scene"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="map-section">
+      <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+          <p class="eyebrow">Interactive map</p>
+          <h2>Plan your route visually</h2>
+          <p>
+            This map is powered by Leaflet and highlights a few memorable stops to help users imagine their trip flow.
+          </p>
+        </div>
+
+        <div class="map-layout">
+          <div class="map-card" data-aos="fade-up">
+            <div id="map" aria-label="Map showing Banff travel locations"></div>
+          </div>
+          <aside class="map-notes" data-aos="fade-up" data-aos-delay="100">
+            <h3>Suggested route</h3>
+            <ol>
+              <li>Start in Banff town for food, shopping, and easy access to trails.</li>
+              <li>Ride the Banff Gondola for a panoramic overview.</li>
+              <li>Drive toward Lake Louise and Moraine Lake for classic views.</li>
+              <li>Save time for Johnston Canyon if you want a scenic walk.</li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="plan">
+      <div class="container">
+        <div class="section-heading light-text" data-aos="fade-up">
+          <p class="eyebrow">Plan your getaway</p>
+          <h2>A simple 3-day vacation outline</h2>
+          <p>Use this sample schedule as a starting point, then personalize it for your pace and budget.</p>
+        </div>
+
+        <div class="itinerary-grid">
+          <article class="itinerary-card" data-aos="fade-up" data-aos-delay="60">
+            <span class="day-pill">Day 1</span>
+            <h3>Arrive & explore town</h3>
+            <p>Check in, walk Banff Avenue, grab a coffee, then catch sunset at Surprise Corner.</p>
+          </article>
+          <article class="itinerary-card" data-aos="fade-up" data-aos-delay="140">
+            <span class="day-pill">Day 2</span>
+            <h3>Lakes & viewpoints</h3>
+            <p>Spend the day around Lake Louise and Moraine Lake, with time for photos and short walks.</p>
+          </article>
+          <article class="itinerary-card" data-aos="fade-up" data-aos-delay="220">
+            <span class="day-pill">Day 3</span>
+            <h3>Adventure morning</h3>
+            <p>Choose a gondola ride or canyon walk before heading back with one last scenic stop.</p>
+          </article>
+        </div>
+
+        <div class="plan-box" data-aos="fade-up" data-aos-delay="280">
+          <div>
+            <h3>Libraries used in this assignment</h3>
+            <ul class="library-list">
+              <li>Glide.js</li>
+              <li>AOS (Animate On Scroll)</li>
+              <li>Leaflet</li>
+              <li>Lightbox2</li>
+            </ul>
+          </div>
+          <a class="button button-primary" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>Designed as a mobile-first travel/vacation web page assignment.</p>
+      <p>&copy; <span id="year"></span> Banff Escape</p>
+    </div>
+  </footer>
+
+  <!-- Third-party library scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7.1/dist/glide.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- Lightbox2 is created by Lokesh Dhakar. The plus bundle includes jQuery as required by the library. -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/js/lightbox-plus-jquery.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
